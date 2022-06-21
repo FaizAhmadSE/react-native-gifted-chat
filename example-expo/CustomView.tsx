@@ -1,4 +1,4 @@
-import { Linking } from 'expo'
+import * as Linking from 'expo-linking';
 import PropTypes from 'prop-types'
 import React from 'react'
 import {

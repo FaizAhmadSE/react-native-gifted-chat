@@ -1,4 +1,4 @@
-import { Linking } from 'expo'
+import * as Linking from 'expo-linking';
 import * as Location from 'expo-location'
 import * as Permissions from 'expo-permissions'
 import * as ImagePicker from 'expo-image-picker'
