@@ -1,6 +1,6 @@
 {
   "name": "react-native-gifted-chat",
-  "version": "0.16.3",
+  "version": "0.16.4",
   "description": "The most complete chat UI for React Native",
   "main": "node_modules/expo/AppEntry.js",
   "types": "lib/index.d.ts",
@@ -32,15 +32,17 @@
     "tsc": "node_modules/.bin/tsc --noEmit",
     "start": "yarn config:dev && expo start",
     "start:web": "yarn config:dev && expo start -w --dev",
-    "build": "rm -rf lib/ && node_modules/.bin/tsc && cp flow-typedefs/*.js.flow lib/",
+    "build": "rm -rf lib/ && node_modules/.bin/tsc && mkdir lib && cp flow-typedefs/*.js.flow lib/",
     "test": "TZ=Europe/Paris jest --no-watchman",
     "test:watch": "TZ=Europe/Paris jest --watch",
     "test:coverage": "TZ=Europe/Paris jest --coverage",
-    "prepublishOnly": "yarn lint && yarn build && yarn test && yarn config:npm",
+    "prepublishOnly": "yarn lint && yarn build && yarn config:npm",
     "postpublish": "yarn config:dev",
     "prettier": "./node_modules/.bin/prettier --write \"src/**/*.{ts,tsx}\"",
+    "build:flowtypes": "find . -type f -not -path './node_modules/*' -name '*.d.ts' -exec sh -c 'yarn flowgen --add-flow-header $1 -o ${1%.*.*}.js.flow' _ '{}' \\;",
     "check-dependencies": "rnx-dep-check",
-    "fix-dependencies": "rnx-dep-check --write"
+    "fix-dependencies": "rnx-dep-check --write",
+    "prepare": "husky install"
   },
   "jest": {
     "preset": "react-native",
